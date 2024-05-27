@@ -72,17 +72,17 @@ func main() {
 }
 ```
 
-## go vet 工具
+## `go vet` 工具
 
 ### 对循环变量的引用
 
 由于上文的[（实验性功能）函数迭代器](#实验性功能函数迭代器)的变化，导致上述代码不会再有类似的风险，所以`vet`工具不再会报告这些错误。
 
-### append的新警告
+### `append`的新警告
 
 现在，像`s = append(s)`这样不产生任何效果的`append`代码，会被`vet`工具报告错误。
 
-### 在difer中错误使用time的警告
+### 在`defer`中错误使用`time`的警告
 
 参考这样一个例子：
 
@@ -98,7 +98,7 @@ defer func() {
 
 现在，`vet`工具会报告出上述错误的写法。
 
-### 对于log/slog的警告
+### 对于`log/slog`的警告
 
 `slog`库的正确用法是`slog.Info(message, key1, v1, key2, v2)`，如果在key的位置填写的既不是一个`string`，又不是一个`slog.Attr`，现在`vet`工具会报告这个错误。
 
